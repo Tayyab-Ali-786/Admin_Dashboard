@@ -17,5 +17,4 @@ This is a responsive and customizable Admin Dashboard built with **React** and *
 - **Package Manager**: npm or yarn
 - **Build Tool**: Vite
 
-## 📂 Folder Structure
 
