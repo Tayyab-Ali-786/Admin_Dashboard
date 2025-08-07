@@ -45,7 +45,6 @@ const router = createBrowserRouter([
     element: (
       <div>
         <Orders />
-        <Sidebar />
       </div>
     ),
   },
@@ -54,7 +53,6 @@ const router = createBrowserRouter([
     element: (
       <div>
         <Overview />
-        <Sidebar />
       </div>
     ),
   },

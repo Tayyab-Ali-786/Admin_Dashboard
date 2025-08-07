@@ -1,6 +1,7 @@
 import React from "react";
 import TopBar from "../TopBar";
 import Sidebar from "../Sidebar";
+import Charts from "../Themes/Charts";
 
 export default function Product() {
   return (
@@ -13,11 +14,9 @@ export default function Product() {
             Welcome to the analytics page
           </h1>
           <div className="bg-white rounded-lg shadow p-6 mb-6">
-            <p className="text-gray-600">
-              This is where you place your main content, such as charts, tables,
-              or other components you want to display on the dashboard. Add more
-              sections or components as needed.
-            </p>
+            <div>
+                <Charts/>
+            </div>
           </div>
         </div>
       </div>

@@ -1,8 +1,27 @@
 import React from "react";
 import TopBar from "../TopBar";
 import Sidebar from "../Sidebar";
+import Card from "../Themes/Card";
 
-export default function Product() {
+export default function Overview() {
+  const orders = [
+    {
+      text: "Total Sales",
+      value: "$4332",
+    },
+    {
+      text: "New Customer",
+      value: "5",
+    },
+    {
+      text: "Order Pending",
+      value: "32",
+    },
+    {
+      text: "Revenue Generated",
+      value: "$2324",
+    },
+  ];
   return (
     <div className="flex flex-col h-screen bg-gray-100">
       <TopBar />
@@ -13,11 +32,28 @@ export default function Product() {
             Welcome to the overview page
           </h1>
           <div className="bg-white rounded-lg shadow p-6 mb-6">
-            <p className="text-gray-600">
-              This is where you place your main content, such as charts, tables,
-              or other components you want to display on the dashboard. Add more
-              sections or components as needed.
-            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <Card text="Total Sales" value="$4332" />
+              <Card text="New Costumer" value="5" />
+              <Card text="Order Pending" value="32" />
+              <Card text="Revenue Generated" value="$2324" />
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow p-6">
+            <h2 className="text-2xl font-semibold mb-4 text-gray-800">
+              Recent Activities
+            </h2>
+            <div className="space-y-4">
+              <div>{orders.map((order) => 
+                <div key={order.id}>
+                  <h3 className="text-lg font-medium text-gray-700">
+                    {order.text}
+                  </h3>
+                  <p className="text-gray-600">{order.value}</p>
+                </div>
+              )}</div>
+            </div>
           </div>
         </div>
       </div>
