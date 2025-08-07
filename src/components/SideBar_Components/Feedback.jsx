@@ -10,7 +10,7 @@ export default function Product() {
         <Sidebar />
         <div className="flex-1 p-6 overflow-auto">
           <h1 className="text-3xl font-bold mb-6 text-gray-800">
-            Welcome to the overview page
+            Welcome to the feedback page
           </h1>
           <div className="bg-white rounded-lg shadow p-6 mb-6">
             <p className="text-gray-600">

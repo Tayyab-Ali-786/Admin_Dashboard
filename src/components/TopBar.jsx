@@ -20,19 +20,13 @@ export default function TopBar() {
         <span className="text-gray-400 text-sm">🔍</span>
       </div>
       {/* Navigation Links */}
-      <div className="flex gap-6 font-semibold">
-        <NavLink
-          to="/dashboard"
-          className={({ isActive }) =>
-            `hover:text-blue-400 transition ${isActive ? "text-blue-400" : "text-white"}`
-          }
-        >
-          Dashboard
-        </NavLink>
+      <div className="flex gap-6 items-center font-semibold">
         <NavLink
           to="/user"
           className={({ isActive }) =>
-            `hover:text-blue-400 transition ${isActive ? "text-blue-400" : "text-white"}`
+            `hover:text-blue-400 transition ${
+              isActive ? "text-blue-400" : "text-white"
+            }`
           }
         >
           User
@@ -40,7 +34,9 @@ export default function TopBar() {
         <NavLink
           to="/settings"
           className={({ isActive }) =>
-            `hover:text-blue-400 transition ${isActive ? "text-blue-400" : "text-white"}`
+            `hover:text-blue-400 transition ${
+              isActive ? "text-blue-400" : "text-white"
+            }`
           }
         >
           Settings

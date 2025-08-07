@@ -6,7 +6,7 @@ import Widget from "../components/Widget";
 
 export default function Home() {
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col h-screen bg-white dark:bg-gray-900 text-black dark:text-white">
       {/* Top Navigation Bar */}
       <TopBar />
 

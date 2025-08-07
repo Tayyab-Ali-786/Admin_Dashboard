@@ -2,7 +2,7 @@ import React from "react";
 import TopBar from "../TopBar";
 import Sidebar from "../Sidebar";
 
-export default function Dashboard() {
+export default function Dashboard1() {
   return (
     <div className="flex flex-col h-screen bg-gray-100">
       <TopBar />
