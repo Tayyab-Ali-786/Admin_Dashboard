@@ -6,24 +6,52 @@ export default function Orders() {
   const orders = [
     {
       id: 1,
-      product: "Product A",
+      product: "Dell Inspiron Laptop",
       quantity: 2,
-      price: 20.0,
+      price: 800.0,
       status: "Shipped",
     },
     {
       id: 2,
-      product: "Product B",
+      product: "Apple Watch Series 7",
       quantity: 1,
-      price: 15.0,
+      price: 400.0,
       status: "Pending",
     },
     {
       id: 3,
-      product: "Product C",
+      product: "Samsung 4K Smart TV",
       quantity: 5,
-      price: 10.0,
+      price: 500.0,
       status: "Delivered",
+    },
+    {
+      id: 4,
+      product: "Sony Wireless Headphones",
+      quantity: 3,
+      price: 200.0,
+      status: "Shipped",
+    },
+    {
+      id: 5,
+      product: "HP Envy Printer",
+      quantity: 2,
+      price: 150.0,
+      status: "Pending",
+    },
+    {
+      id: 6,
+      product: "Logitech Gaming Mouse",
+      quantity: 1,
+      price: 50.0,
+      status: "Delivered",
+    },
+    {
+      id: 7,
+      product: "Canon EOS Camera",
+      quantity: 4,
+      price: 1000.0,
+      status: "Shipped",
     },
   ];
 
