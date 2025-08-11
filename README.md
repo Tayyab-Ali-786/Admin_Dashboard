@@ -44,3 +44,5 @@ A modern, responsive admin dashboard built with **React**, **Vite**, and **Tailw
    ```bash
    git clone https://github.com/yourusername/admin-dashboard.git
    cd admin-dashboard
+   npm install
+   npm run dev
