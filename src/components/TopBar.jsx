@@ -2,6 +2,11 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 export default function TopBar() {
+  const navLinkClasses = ({ isActive }) =>
+    `relative transition-colors duration-200 ${
+      isActive ? "text-blue-400" : "text-gray-300 hover:text-blue-400"
+    }`;
+
   return (
     <div className="bg-gray-900 text-white px-8 py-3 flex justify-between items-center shadow-lg border-b border-gray-800">
       {/* Logo */}
@@ -26,36 +31,14 @@ export default function TopBar() {
 
       {/* Navigation Links */}
       <div className="flex gap-8 items-center font-medium">
-        <NavLink
-          to="/user"
-          className={({ isActive }) =>
-            `relative transition-colors duration-200 ${
-              isActive ? "text-blue-400" : "text-gray-300 hover:text-blue-400"
-            }`
-          }
-        >
+        <NavLink to="/user" className={navLinkClasses}>
           User
-          {({ isActive }) =>
-            isActive && (
-              <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-400 rounded-full"></span>
-            )
-          }
+          <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition" />
         </NavLink>
 
-        <NavLink
-          to="/settings"
-          className={({ isActive }) =>
-            `relative transition-colors duration-200 ${
-              isActive ? "text-blue-400" : "text-gray-300 hover:text-blue-400"
-            }`
-          }
-        >
+        <NavLink to="/settings" className={navLinkClasses}>
           Settings
-          {({ isActive }) =>
-            isActive && (
-              <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-400 rounded-full"></span>
-            )
-          }
+          <span className="absolute left-0 -bottom-1 w-full h-0.5 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition" />
         </NavLink>
       </div>
     </div>

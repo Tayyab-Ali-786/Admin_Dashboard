@@ -14,71 +14,37 @@ const Toast = ({ message, onClose }) => {
 };
 
 export default function Product() {
-  const products = [
-    {
-      id: 1,
-      text: "Dell Precision",
-      GraphicsCard: "Quaddro T2000",
-      Processor: "Intel Core i7-11850H",
-      value: "$100",
-    },
-    {
-      id: 2,
-      text: "Dell Latitude",
-      GraphicsCard: "Intel Iris Xe",
-      Processor: "Intel Core i5-1135G7",
-      value: "$200",
-    },
-    {
-      id: 3,
-      text: "HP Victus",
-      GraphicsCard: "RTX 3050",
-      Processor: "AMD Ryzen 7 5800H",
-      value: "$300",
-    },
-    {
-      id: 4,
-      text: "Lenovo ThinkPad",
-      GraphicsCard: "NVIDIA GeForce MX450",
-      Processor: "Intel Core i7-1165G7",
-      value: "$400",
-    },
-    {
-      id: 5,
-      text: "Asus ROG Zephyrus",
-      GraphicsCard: "RTX 3070",
-      Processor: "AMD Ryzen 9 5900HX",
-      value: "$1,200",
-    },
-    {
-      id: 6,
-      text: "Acer Predator Helios",
-      GraphicsCard: "RTX 3060",
-      Processor: "Intel Core i9-11900H",
-      value: "$900",
-    },
-    {
-      id: 7,
-      text: "MSI GS65 Stealth",
-      GraphicsCard: "RTX 3080",
-      Processor: "Intel Core i9-11980HK",
-      value: "$1,500",
-    },
-  ];
+  const [products, setProducts] = useState([]);
+  // Fetch data from the API
+  async function getData() {
+    try {
+      const response = await fetch("https://fakestoreapi.com/products");
+      const data = await response.json();
+      setProducts(data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  }
 
-  const [product, setProduct] = useState("");
-  const [filteredProduct, setFilterProduct] = useState(products);
+  // Call getData on component mount
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const [searchTerm, setSearchTerm] = useState("");
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const [toastMessage, setToastMessage] = useState(null);
 
+  // Filter products based on search term
   useEffect(() => {
     const result = products.filter((p) =>
-      p.text.toLowerCase().includes(product)
+      p.title ? p.title.toLowerCase().includes(searchTerm.toLowerCase()) : false
     );
-    setFilterProduct(result);
-  }, [product]);
+    setFilteredProducts(result);
+  }, [searchTerm, products]);
 
-  function handlechange(e) {
-    setProduct(e.target.value.toLowerCase());
+  function handleChange(e) {
+    setSearchTerm(e.target.value);
   }
 
   const handleOrderConfirmation = () => {
@@ -118,10 +84,10 @@ export default function Product() {
             <div className="flex justify-center items-center">
               <label className="font-bold text-2xl mr-4">Search</label>
               <input
-                className="border border-solid border-black rounded-lg h-10 min-w-3/5 pl-3"
+                className="border border-solid border-black rounded-lg h-10 min-w-[60%] pl-3"
                 type="search"
-                placeholder="search here"
-                onChange={handlechange}
+                placeholder="Search here"
+                onChange={handleChange}
               />
             </div>
           </div>
@@ -133,12 +99,11 @@ export default function Product() {
                   <th className="px-6 py-3">ID</th>
                   <th className="px-6 py-3">Product Name</th>
                   <th className="px-6 py-3">Price</th>
-                  <th className="px-6 py-3">Processor</th>
-                  <th className="px-6 py-3">Graphics Card</th>
+                  <th className="px-6 py-3">Category</th>
                 </tr>
               </thead>
               <tbody>
-                {filteredProduct.map((product) => (
+                {filteredProducts.map((product) => (
                   <tr key={product.id} className="border-b hover:bg-gray-50">
                     <td
                       className="px-6 py-4 cursor-pointer"
@@ -150,25 +115,19 @@ export default function Product() {
                       className="px-6 py-4 cursor-pointer"
                       onClick={handleOrderConfirmation}
                     >
-                      {product.text}
+                      {product.title || "N/A"}
                     </td>
                     <td
                       className="px-6 py-4 cursor-pointer"
                       onClick={handleOrderConfirmation}
                     >
-                      {product.value}
+                      ${product.price?.toFixed(2) || "N/A"}
                     </td>
                     <td
                       className="px-6 py-4 cursor-pointer"
                       onClick={handleOrderConfirmation}
                     >
-                      {product.Processor}
-                    </td>
-                    <td
-                      className="px-6 py-4 cursor-pointer"
-                      onClick={handleOrderConfirmation}
-                    >
-                      {product.GraphicsCard}
+                      {product.category || "N/A"}
                     </td>
                   </tr>
                 ))}
