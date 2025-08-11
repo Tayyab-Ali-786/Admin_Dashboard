@@ -3,11 +3,7 @@ import Sidebar from "../Sidebar";
 import TopBar from "../TopBar";
 
 export default function Settings() {
-  const [profile, setProfile] = useState({
-    name: "",
-    email: "",
-  });
-
+  const [profile, setProfile] = useState({ name: "", email: "" });
   const [passwords, setPasswords] = useState({
     oldPassword: "",
     newPassword: "",
@@ -35,18 +31,19 @@ export default function Settings() {
     alert("Profile saved successfully!");
   };
 
-  // Save password to localStorage (just for demo; not secure)
   const savePassword = () => {
     localStorage.setItem("userPassword", JSON.stringify(passwords));
     alert("Password updated (demo only — not secure)");
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      <Sidebar />
+    <div className="flex flex-col min-h-screen bg-gray-100">
+      {/* TopBar stays at the top */}
+      <TopBar />
 
-      <div className="flex flex-col flex-1">
-        <TopBar />
+      {/* Main content area: Sidebar + page content */}
+      <div className="flex flex-1">
+        <Sidebar />
 
         <main className="flex-1 p-6 overflow-auto">
           <h1 className="text-3xl font-bold text-gray-800 mb-6">Settings</h1>
@@ -63,7 +60,6 @@ export default function Settings() {
               <h2 className="text-2xl font-semibold mb-4 text-gray-800">
                 Profile Information
               </h2>
-
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col">
                   <label className="mb-1 text-sm text-gray-600">
@@ -78,7 +74,6 @@ export default function Settings() {
                     className="border border-blue-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   />
                 </div>
-
                 <div className="flex flex-col">
                   <label className="mb-1 text-sm text-gray-600">
                     Email Address
@@ -93,7 +88,6 @@ export default function Settings() {
                   />
                 </div>
               </div>
-
               <div className="mt-6">
                 <button
                   onClick={saveProfile}
@@ -109,7 +103,6 @@ export default function Settings() {
               <h2 className="text-2xl font-semibold mb-4 text-gray-800">
                 Password Settings
               </h2>
-
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col">
                   <label className="mb-1 text-sm text-gray-600">
@@ -124,7 +117,6 @@ export default function Settings() {
                     className="border border-blue-200 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
                   />
                 </div>
-
                 <div className="flex flex-col">
                   <label className="mb-1 text-sm text-gray-600">
                     New Password
@@ -139,7 +131,6 @@ export default function Settings() {
                   />
                 </div>
               </div>
-
               <div className="mt-6">
                 <button
                   onClick={savePassword}

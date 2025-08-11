@@ -58,7 +58,7 @@ export default function StatGrid() {
       ))}
 
       {/* Image Section */}
-      <div className="bg-white rounded-xl shadow-md p-6 col-span-1 sm:col-span-2 lg:col-span-2 flex justify-center items-center">
+      <div className="bg-gray-200 rounded-xl shadow-md p-6 col-span-1 sm:col-span-2 lg:col-span-2 flex justify-center items-center">
         <img
           src={image}
           alt="random"
@@ -67,7 +67,7 @@ export default function StatGrid() {
       </div>
 
       {/* Chart Section */}
-      <div className="bg-white rounded-xl shadow-md p-6 col-span-1 sm:col-span-2 lg:col-span-2">
+      <div className="bg-gray-200 rounded-xl shadow-md p-6 col-span-1 sm:col-span-2 lg:col-span-2">
         <Charts1 />
       </div>
     </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Sidebar from "../components/Sidebar";
 import StatGrids from "../components/StatGrids";
 import TopBar from "../components/TopBar";
@@ -7,16 +7,10 @@ import Widget from "../components/Widget";
 export default function Home() {
   return (
     <div className="flex flex-col h-screen bg-white dark:bg-gray-900 text-black dark:text-white">
-      {/* Top Navigation Bar */}
       <TopBar />
-
-      {/* Main Content Area */}
       <div className="flex flex-1">
-        {/* Sidebar */}
         <Sidebar />
-
-        {/* Main Dashboard Content */}
-        <main className="flex-2 p-5 bg-gray-100 overflow-auto">
+        <main className="flex-2 p-5 bg-white overflow-auto">
           <StatGrids />
         </main>
       </div>

@@ -66,14 +66,10 @@ export default function Product() {
     },
   ];
 
-  // State for the search term.
   const [product, setProduct] = useState("");
-  // State for the filtered list of products.
   const [filteredProduct, setFilterProduct] = useState(products);
-  // State to control the toast.
   const [toastMessage, setToastMessage] = useState(null);
 
-  // useEffect to perform the filtering logic when the search term changes.
   useEffect(() => {
     const result = products.filter((p) =>
       p.text.toLowerCase().includes(product)
@@ -81,15 +77,12 @@ export default function Product() {
     setFilterProduct(result);
   }, [product]);
 
-  // Handler for the search input field.
   function handlechange(e) {
     setProduct(e.target.value.toLowerCase());
   }
 
-  // Handler for showing the toast notification.
   const handleOrderConfirmation = () => {
     setToastMessage("Your order is confirmed!");
-    // Automatically hide the toast after 3 seconds.
     setTimeout(() => {
       setToastMessage(null);
     }, 3000);

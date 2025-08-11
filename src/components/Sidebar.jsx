@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { RxDashboard } from "react-icons/rx";
-import { MdOutlineDeliveryDining } from "react-icons/md";
+import { MdOutlineDeliveryDining, MdAnalytics } from "react-icons/md";
 import { GrOverview } from "react-icons/gr";
 import { AiFillProduct } from "react-icons/ai";
-import { MdAnalytics } from "react-icons/md";
 import { FaRegCommentDots } from "react-icons/fa";
 import { BsList } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
@@ -20,14 +19,21 @@ export default function Sidebar() {
     }
   }, [isOpen]);
 
+  const linkBaseClasses =
+    "flex items-center gap-2 px-2 py-2 rounded-md transition-all duration-200 ease-in-out";
+  const hoverClasses =
+    "hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-blue-500 dark:hover:text-blue-400";
+
   return (
     <div
       className={`bg-white dark:bg-gray-900 text-gray-900 dark:text-white h-screen p-4 flex flex-col shadow-lg transition-all duration-300 ease-in-out ${
         isOpen ? "w-64" : "w-16"
       }`}
     >
+      {/* Toggle button */}
       <div>
-        <button className="pb-2 mb-4 text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"
+        <button
+          className="pb-2 mb-4 text-gray-500 dark:text-gray-400 hover:text-blue-500 dark:hover:text-blue-400"
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close sidebar" : "Open sidebar"}
         >
@@ -37,95 +43,97 @@ export default function Sidebar() {
             <ImCross className="text-2xl" />
           )}
         </button>
-        <ul className="space-y-12">
+
+        {/* Menu items */}
+        <ul className="space-y-3">
           <li>
             <NavLink
               to={"/dashboard"}
               className={({ isActive }) =>
-                isActive
-                  ? "text-blue-500 dark:text-blue-400 font-bold text-lg"
-                  : "text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 font-semibold text-lg"
+                `${linkBaseClasses} ${
+                  isActive
+                    ? "bg-blue-500 text-white font-bold"
+                    : "text-gray-700 dark:text-gray-300"
+                } ${hoverClasses}`
               }
             >
-              <p className="flex items-center gap-2">
-                <RxDashboard />
-                <span className={isOpen ? "block" : "hidden"}>Dashboard</span>
-              </p>
+              <RxDashboard className="text-lg" />
+              <span className={isOpen ? "block" : "hidden"}>Dashboard</span>
             </NavLink>
           </li>
           <li>
             <NavLink
               to={"/orders"}
               className={({ isActive }) =>
-                isActive
-                  ? "text-blue-500 dark:text-blue-400 font-bold text-lg"
-                  : "text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 font-semibold text-lg"
+                `${linkBaseClasses} ${
+                  isActive
+                    ? "bg-blue-500 text-white font-bold"
+                    : "text-gray-700 dark:text-gray-300"
+                } ${hoverClasses}`
               }
             >
-              <p className="flex items-center gap-2">
-                <MdOutlineDeliveryDining />
-                <span className={isOpen ? "block" : "hidden"}>Orders</span>
-              </p>
+              <MdOutlineDeliveryDining className="text-lg" />
+              <span className={isOpen ? "block" : "hidden"}>Orders</span>
             </NavLink>
           </li>
           <li>
             <NavLink
               to={"/overview"}
               className={({ isActive }) =>
-                isActive
-                  ? "text-blue-500 dark:text-blue-400 font-bold text-lg"
-                  : "text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 font-semibold text-lg"
+                `${linkBaseClasses} ${
+                  isActive
+                    ? "bg-blue-500 text-white font-bold"
+                    : "text-gray-700 dark:text-gray-300"
+                } ${hoverClasses}`
               }
             >
-              <p className="flex items-center gap-2">
-                <GrOverview />
-                <span className={isOpen ? "block" : "hidden"}>Overview</span>
-              </p>
+              <GrOverview className="text-lg" />
+              <span className={isOpen ? "block" : "hidden"}>Overview</span>
             </NavLink>
           </li>
           <li>
             <NavLink
               to={"/product"}
               className={({ isActive }) =>
-                isActive
-                  ? "text-blue-500 dark:text-blue-400 font-bold text-lg"
-                  : "text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 font-semibold text-lg"
+                `${linkBaseClasses} ${
+                  isActive
+                    ? "bg-blue-500 text-white font-bold"
+                    : "text-gray-700 dark:text-gray-300"
+                } ${hoverClasses}`
               }
             >
-              <p className="flex items-center gap-2">
-                <AiFillProduct />
-                <span className={isOpen ? "block" : "hidden"}>Product</span>
-              </p>
+              <AiFillProduct className="text-lg" />
+              <span className={isOpen ? "block" : "hidden"}>Product</span>
             </NavLink>
           </li>
           <li>
             <NavLink
               to={"/analytics"}
               className={({ isActive }) =>
-                isActive
-                  ? "text-blue-500 dark:text-blue-400 font-bold text-lg"
-                  : "text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 font-semibold text-lg"
+                `${linkBaseClasses} ${
+                  isActive
+                    ? "bg-blue-500 text-white font-bold"
+                    : "text-gray-700 dark:text-gray-300"
+                } ${hoverClasses}`
               }
             >
-              <p className="flex items-center gap-2">
-                <MdAnalytics />
-                <span className={isOpen ? "block" : "hidden"}>Analytics</span>
-              </p>
+              <MdAnalytics className="text-lg" />
+              <span className={isOpen ? "block" : "hidden"}>Analytics</span>
             </NavLink>
           </li>
           <li>
             <NavLink
               to={"/feedback"}
               className={({ isActive }) =>
-                isActive
-                  ? "text-blue-500 dark:text-blue-400 font-bold text-lg"
-                  : "text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400 font-semibold text-lg"
+                `${linkBaseClasses} ${
+                  isActive
+                    ? "bg-blue-500 text-white font-bold"
+                    : "text-gray-700 dark:text-gray-300"
+                } ${hoverClasses}`
               }
             >
-              <p className="flex items-center gap-2">
-                <FaRegCommentDots />
-                <span className={isOpen ? "block" : "hidden"}>Feedback</span>
-              </p>
+              <FaRegCommentDots className="text-lg" />
+              <span className={isOpen ? "block" : "hidden"}>Feedback</span>
             </NavLink>
           </li>
         </ul>
