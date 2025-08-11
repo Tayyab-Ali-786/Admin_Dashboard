@@ -16,12 +16,8 @@ export default function Home() {
         <Sidebar />
 
         {/* Main Dashboard Content */}
-        <main className="flex-1 p-4 bg-gray-100 overflow-auto">
+        <main className="flex-2 p-5 bg-gray-100 overflow-auto">
           <StatGrids />
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-            <Widget />
-            <Widget />
-          </div>
         </main>
       </div>
     </div>
